@@ -1,6 +1,6 @@
 package repository;
 
-import model.User;
+import models.User;
 
 import org.springframework.data.mongodb.repository.Query;
 

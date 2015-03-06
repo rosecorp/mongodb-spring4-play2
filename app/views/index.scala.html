@@ -1,7 +1,11 @@
-@(message: String)
+@(message: String, users: List[User])
 
 @main("Welcome to Play") {
 
     @message
+    
+    @for(user <- users) {
+    	@user.getUsername()
+    }
 
 }

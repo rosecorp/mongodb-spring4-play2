@@ -2,7 +2,7 @@ package service;
 
 import java.util.List;
 
-import model.User;
+import models.User;
 
 public interface UserService {
 	

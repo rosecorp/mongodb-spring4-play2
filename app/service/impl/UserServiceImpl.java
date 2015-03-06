@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import model.User;
+import models.User;
 import repository.UserRepository;
 import service.UserService;
 
