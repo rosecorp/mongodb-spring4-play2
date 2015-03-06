@@ -1,0 +1,7 @@
+New log file opened at Tue Mar 03 21:36:57 GMT 2015 by 6700@karaluch
+Taking next connection to: 55054
+New client attempting to connect on port: 55055-55054
+  Address = /192.168.2.129:55054
+This client on port 55055 has uuid 6f8cd786-5d26-48b0-82af-58311433c754 configName activator humanReadableName Activator protocolVersion 1 featureTags Vector()
+Connected Clients: activator-6f8cd786-5d26-48b0-82af-58311433c754
+Taking next connection to: 55054
