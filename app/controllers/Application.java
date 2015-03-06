@@ -1,7 +1,5 @@
 package controllers;
 
-import java.util.List;
-
 import model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +19,7 @@ public class Application extends Controller {
 		User u = new User("jakub", "secret5", "java dev2");
 		userService.addNewUser(u);
 		
-		List<User> findAllUsers = userService.findAllUsers();
-		
-		
-		return ok(index.render(userService.findAllUsers().get(findAllUsers.size()-1).toString()));
+		return ok(index.render(userService.getUser("jakub").toString()));
 	}
 
 }
