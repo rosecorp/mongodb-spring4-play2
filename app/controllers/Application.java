@@ -19,7 +19,7 @@ public class Application extends Controller {
 
 	public Result index() {
 		List<User> users = userService.findAllUsers();
-					
+
 		return ok(index.render("Welcome anyone!", users));
 	}
 	
