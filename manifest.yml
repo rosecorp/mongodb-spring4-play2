@@ -1,0 +1,7 @@
+---
+applications:
+- name: play-spring4-mongo-demo
+  memory: 512MB
+  instances: 1
+services:
+- proxy-demo
