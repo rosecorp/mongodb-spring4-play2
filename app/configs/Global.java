@@ -1,18 +1,22 @@
 package configs;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import play.Application;
 import play.GlobalSettings;
+import play.Play;
 
 public class Global extends GlobalSettings {
 
-    private ApplicationContext ctx;
+    private AnnotationConfigApplicationContext ctx;
 
     @Override
     public void onStart(Application app) {
-        ctx = new AnnotationConfigApplicationContext(AppConfig.class, SpringMongoConfig.class);
+    	String profile = Play.application().configuration().getString("spring.profile");
+        ctx = new AnnotationConfigApplicationContext();
+        ctx.getEnvironment().setActiveProfiles(profile);
+        ctx.register(AppConfig.class, MongoCloudConfig.class, MongoConfig.class, MongoLocalConfig.class);
+        ctx.refresh();        
     }
         
     @Override
