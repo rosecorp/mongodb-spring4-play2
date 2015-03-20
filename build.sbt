@@ -20,6 +20,7 @@ libraryDependencies ++= Seq(
   "org.mongodb" % "mongo-java-driver" % "2.12.5",
   "org.springframework.data" % "spring-data-mongodb" % "1.6.2.RELEASE",
   "org.springframework" % "spring-test" % "4.1.5.RELEASE" % "test",
+  "com.adrianhurt" %% "play-bootstrap3" % "0.4",
   javaJdbc,
   javaEbean,
   cache,

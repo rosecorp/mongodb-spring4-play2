@@ -1,11 +1,47 @@
-@(message: String, users: List[User])
+@(	message: String, 
+	users: List[User],
+	userForm: Form[models.User]
+	)
 
-@main("Welcome to Play") {
+@import b3.vertical.fieldConstructor
 
-    @message
-    
-    @for(user <- users) {
-    	@user.getUsername()
-    }
+@main("Add User Form", tab = "index") {
+
+@message
+
+		@b3.form(routes.Application.postIndex) {
+		<div class="row">
+		<div class="col-md-3">
+		    @b3.text( userForm("username"), '_label -> "Username", 'placeholder -> "Username" )
+		    @b3.text( userForm("role"), '_label -> "Role", 'placeholder -> "Role" )
+		    @b3.password( userForm("password"), '_label -> "Password", 'placeholder -> "Password" )
+		    
+		    @b3.free() {
+				<button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-ok"></span> Save changes</button>
+				<a class="btn btn-default"> <span class="glyphicon glyphicon-remove"></span> Cancel</a>
+			}
+		 </div>
+		 </div>
+		}		
+    	<p class="text-right"><a class="btn btn-default btn-xs" href="reset-all" role="button">Delete All!</a></p>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Username</th>
+					<th>Role</th>
+					<th>Password</th>
+				</tr>
+			</thead>
+			@for(user <- users) {
+			<tr>
+				<td>@user.getId()</td>
+				<td>@user.getUsername()</td>
+				<td>@user.getRole()</td>
+				<td>@user.getPassword()</td>
+			</tr>
+			}
+			</tbody>
+		</table>
 
 }

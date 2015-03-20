@@ -12,4 +12,6 @@ public interface UserService {
 	
 	User getUser(String username);
 	
+	void deleteAll();
+	
 }
