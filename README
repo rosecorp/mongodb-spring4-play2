@@ -2,3 +2,9 @@ MongoDB Spring4 and Play Framework 2.3.8 Template
 =================================
 
 It's a short example how to bring all togheter up and running.
+
+How to make it working?
+
+1. activator compile dist
+2. nimbus2 push mongodb-spring4-play2 -p target/universal/mongodb-spring4-play2-1.0-SNAPSHOT.zip - if you want to push it to the cloud
+3. activator ~run

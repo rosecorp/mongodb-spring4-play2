@@ -10,8 +10,14 @@ public interface UserService {
 	
 	List<User> findAllUsers();
 	
-	User getUser(String username);
+	User getUserName(String username);
+	
+	User findUserById(String id);
 	
 	void deleteAll();
+	
+	void deleteUser(User user);
+	
+	
 	
 }

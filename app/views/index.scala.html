@@ -1,14 +1,12 @@
 @(	message: String, 
-	users: List[User],
-	userForm: Form[models.User]
+	users: List[views.formdata.UserFormData],
+	userForm: Form[views.formdata.UserFormData]
 	)
 
 @import b3.vertical.fieldConstructor
 
 @main("Add User Form", tab = "index") {
-
-@message
-
+<div class="container">
 		@b3.form(routes.Application.postIndex) {
 		<div class="row">
 		<div class="col-md-3">
@@ -16,13 +14,33 @@
 		    @b3.text( userForm("role"), '_label -> "Role", 'placeholder -> "Role" )
 		    @b3.password( userForm("password"), '_label -> "Password", 'placeholder -> "Password" )
 		    
-		    @b3.free() {
-				<button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-ok"></span> Save changes</button>
-				<a class="btn btn-default"> <span class="glyphicon glyphicon-remove"></span> Cancel</a>
-			}
+		    <div class="form-group">
+		    	<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-ok"></span> Save changes</button>
+					<a class="btn cancel"> <span class="glyphicon glyphicon-remove"></span> Cancel</a>
+				</div>
+			</div>
 		 </div>
 		 </div>
-		}		
+		}
+		
+		@if(flash.containsKey("success")) {
+			<div class="well">
+				<div id="success-message" class="text-success">
+					@flash.get("success")
+				</div>
+			</div>
+		}
+		@if(flash.containsKey("error")) {
+		    <div class="well">
+			    <div id="error-message" class="text-danger">
+			    	@flash.get("error")
+			    </div>
+		    </div>
+	    }
+		
+		@message
+		
     	<p class="text-right"><a class="btn btn-default btn-xs" href="reset-all" role="button">Delete All!</a></p>
 		<table class="table table-striped">
 			<thead>
@@ -31,6 +49,7 @@
 					<th>Username</th>
 					<th>Role</th>
 					<th>Password</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			@for(user <- users) {
@@ -39,9 +58,10 @@
 				<td>@user.getUsername()</td>
 				<td>@user.getRole()</td>
 				<td>@user.getPassword()</td>
+				<td><a href="/delete/@user.getId()" class="sr-only-focusable">Delete</a></td>
 			</tr>
 			}
 			</tbody>
 		</table>
-
+</div>
 }

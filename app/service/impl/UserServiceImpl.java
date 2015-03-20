@@ -27,13 +27,24 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(String username) {
+	public User findUserById(String id) {
+		return userRepository.findOne(id);
+	}
+
+	@Override
+	public User getUserName(String username) {
 		return userRepository.findByNameAndReturnUsernameOnly(username);
 	}
 
 	@Override
 	public void deleteAll() {
-		userRepository.deleteAll();		
+		userRepository.deleteAll();
 	}
+
+	@Override
+	public void deleteUser(User user) {
+		userRepository.delete(user);
+	}
+
 
 }

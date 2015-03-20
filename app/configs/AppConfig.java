@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@ComponentScan({"controllers", "service"})
+@ComponentScan({"controllers", "service", "assemblers"})
 public class AppConfig {
 	
 	@Bean
